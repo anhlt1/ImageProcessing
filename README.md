@@ -4,7 +4,7 @@
 >root
 >|-- images<br>
 >|-- templates<br>
->|   |-- index.html<br>
->|   |-- main.html<br>
+>|-- |-- index.html<br>
+>|-- |-- main.html<br>
 >|-- app.py<br>
 >|-- ImageProcessing.py
