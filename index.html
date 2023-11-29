@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Processing_La The Anh_B20DCCN053</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .images {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin: 20px 0;
+      }
+      .image-group {
+        margin: 10px 50px 10px 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form
+      style="margin: 10px"
+      action=""
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input type="file" name="image" accept="image/*" />
+      <button class="btn btn-primary" type="submit">Upload</button>
+    </form>
+
+    {% with messages = get_flashed_messages() %} {% if messages %} {% for m in
+    messages %}
+    <p style="margin: 10px 10px 20px">{{m}}</p>
+    {% endfor %} {% endif %} {% endwith %}
+    <a style="margin: 10px" class="btn btn-primary" href="/">Back</a>
+    <br />
+
+    <div class="images">
+      {% if originalImage %}
+      <div class="image-group">
+        <label for="originalImage">Original Image:</label>
+        <br />
+        <img
+          src="data:image/jpeg;base64,{{originalImage}}"
+          alt="Original Image"
+        />
+      </div>
+      {% endif %} {% if processedImage %}
+      <div class="image-group">
+        <label for="processedImage">Processed Image:</label>
+        <br />
+        <img
+          src="data:image/jpeg;base64,{{processedImage}}"
+          alt="Processed Image"
+        />
+      </div>
+      {% endif %}
+    </div>
+
+    <script>
+      var currentURL = window.location.href;
+      path = currentURL.substring(21);
+      const form = document.querySelector("form");
+      form.setAttribute("action", path);
+    </script>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
